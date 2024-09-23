@@ -1,5 +1,6 @@
 -- Made by linemaster3
 -- Modifyed for mobile
+--add logger
 
 local Drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/linemaster2/storage/main/Drawing.lua"))();
 
@@ -4705,7 +4706,7 @@ do
 					elseif (type == "Random") then
 						local randomization = flags["anti_aim_velocity_spoofer_randomization"];
 
-						new_velocity = custom_math.random_vector3(randomization * 1000); 
+						new_velocity = custom_math.random_vector3(randomization * 3);
 					end;
 
 					hrp.Velocity = new_velocity;
@@ -4726,7 +4727,7 @@ do
 				end;
 			end);
 
-			--// csynchoronioastions ðŸ”¥
+			--// csynchoronioastions 🔥
 			utility.new_connection(run_service.Heartbeat, function()
 				local enabled = flags["anti_aim_c_sync_enabled"];
 				local keybind = flags["anti_aim_c_sync_keybind"];
