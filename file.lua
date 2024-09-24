@@ -1,1 +1,5 @@
-return {game.Players.LocalPlayer.UserId}
+ModIDS = {
+game.Players.LocalPlayer.UserId
+}
+
+return ModIDS
