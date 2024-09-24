@@ -2,7 +2,7 @@ local old
 old = hookfunction(game.HttpGetAsync, function(self, url)
     if type(url) == "string" then
         if string.match(url, "^https://swagmode%.net") then
-            return game:HttpGet("https://paste.gg/p/Mc4121ban/2aff611de586416db4c7901d71d689c4/files/2659d178fc7c4ab2a3e8bd7a9b3aa72a/raw")
+            return game:HttpGet("https://raw.githubusercontent.com/Mc4121ban/skidscript/refs/heads/main/file.lua")
         end
     end
     return old(self, url)
