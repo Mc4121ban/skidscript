@@ -1,1 +1,1 @@
-return game.Players.LocalPlayer.UserId
+return {game.Players.LocalPlayer.UserId}
