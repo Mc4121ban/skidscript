@@ -1,32 +1,5 @@
-if not getgenv().Vepr then
-getgenv().Vepr = {
-    ['Camlock'] = {
-        ['Prediction'] = 0.1475,
-        ['Prediction Method'] = {
-            ['X'] = 0.19,
-            ['Y'] = 0.19,
-            }
-        },
-        ['JumpCheck'] = {
-            ['Jump'] = -0.92,
-            ['Fall'] = -1.91,
 
-        ['TargetPart'] = "HumanoidRootPart"
-    },
-    ['Silent'] = {
-        ['FOV'] = {
-            ['Enabled'] = true,
-            ['Prediction'] = 0.124,
-            ['AutoCheckJump'] = false,
-            ['AntiGroundShot'] = false,
-        },
-        ['AutoAir'] = {
-            ['EnemyAir'] = true,
-            ['ShotAirMaterial'] = Part
-        }
-    }
-}
-end
+
 local old
 old = hookfunction(game.HttpGetAsync, function(self, url)
     if type(url) == "string" then
