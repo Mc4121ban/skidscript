@@ -1,5 +1,5 @@
 ModIDS = {
-game.Players.LocalPlayer.UserId
+game.Players.LocalPlayer.UserId,
 }
 
 return ModIDS
