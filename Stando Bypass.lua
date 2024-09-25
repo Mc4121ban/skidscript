@@ -2,7 +2,7 @@ local old
 old = hookfunction(game.HttpGetAsync, function(self, url)
     if type(url) == "string" then
         if string.match(url, "https://raw.githubusercontent.com/bjHu2930cBy42lqvbocgyhyUNFO3ufsf/RxrfwShMkd0lX24z438WvTeQTE9kswAH/main/wYkR6ZFcjxuVVYAeO6n53yeu9ZO40LYN") then
-            return game:HttpGet("https://paste.gg/p/Mc4121ban/dea5271bf2ea4241a6d35b707eab2cc4/files/5e3d88eb38ac4d3cb5844087dcc50c70/raw")
+            return game:HttpGet("https://raw.githubusercontent.com/Mc4121ban/skidscript/refs/heads/main/stando.lua")
         end
         
     end
