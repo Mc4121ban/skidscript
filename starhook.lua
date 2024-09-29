@@ -1,6 +1,5 @@
 -- Made by linemaster3
--- Modifyed for mobile
---add logger
+-- Modifyed for mobile (atzlazyblue the skibidi modifyer)
 
 local Drawing = loadstring(game:HttpGet("https://raw.githubusercontent.com/linemaster2/storage/main/Drawing.lua"))();
 
@@ -81,7 +80,10 @@ do
 	-- // Ignores
 	local Flags = {} -- Ignore
 	local ColorHolders = {}
-
+	
+	for i = 1, 10 do
+	    print("Starhook Mobile (atzlazyblue): Loaded!")
+	end;
 
 	-- // Extension
 	Library.__index = Library
@@ -592,7 +594,7 @@ do
 		            Colorpicker.Position = UDim2.new(0, ColorpickerFrame.AbsolutePosition.X - 100, 0, ColorpickerFrame.AbsolutePosition.Y)
 		            TweenService:Create(Colorpicker, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Position = UDim2.new(0, ColorpickerFrame.AbsolutePosition.X - 100, 0, ColorpickerFrame.AbsolutePosition.Y + 25)}):Play()
 		        end
-		        Colorpicker.Visible = not Colorpicker.Visible -- who tf thought Colorpicker.Visible = true was a good idea
+		        Colorpicker.Visible = not Colorpicker.Visible -- who tf thought Colorpicker.Visible = true was a good idea like atzlazyblue founded this problem
 		        parent.ZIndex = 100
 		        Library.Cooldown = true
 		        TweenService:Create(Colorpicker, TweenInfo.new(0.1, Enum.EasingStyle.Linear, Enum.EasingDirection.Out), {BackgroundTransparency = 0}):Play()
@@ -822,13 +824,14 @@ do
 			--
 			local Logo = Instance.new("ImageLabel")
 			Logo.Name = "Logo"
-			Logo.Image = "http://www.roblox.com/asset/?id=17673929618"
+			Logo.Image = Properties.Logo
 			Logo.ScaleType = Enum.ScaleType.Fit
 			Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Logo.BackgroundTransparency = 1
 			Logo.BorderColor3 = Color3.fromRGB(0, 0, 0)
 			Logo.BorderSizePixel = 0
 			Logo.Position = UDim2.fromOffset(10, -20)
+			Logo.ImageColor3 = Properties.LogoRGB
 			Logo.Size = UDim2.fromOffset(90, 90)
 			Logo.Parent = Holder
 			--
@@ -2893,7 +2896,7 @@ local game_support = {
         Name = "OG Da Hood",
         Remote = "MainEvent",
         Argument = "UpdateMousePos",
-        Adonis = true
+        Adonis = true -- idk who putted this
     },
     [16033173781] = {
         Number = 12,
@@ -2976,9 +2979,40 @@ local game_support = {
             end
         }
     },
+    [17344804827] = {
+    	Number = 20,
+        Name = "Yeno Hood",
+        Remote = "MainEvent",
+        Argument = "UpdateMousePos",
+        BulletName = "BULLET_RAYS",
+        BulletBeamName = "GunBeam" or "gb" or "Beam" or "Beam1",
+        BulletPath = workspace:FindFirstChild("Ignored") or nil,
+        
+        AdonisBypass = {
+            ExecuteBypass = function()
+                loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Adonis-Anticheat-Bypass-11111", true))()
+            end
+        }
+    },
+    [130633951564639] = {
+    	Number = 21,
+        Name = "Da Bot Aim Trainer",
+        Remote = "MAINEVENT",
+        Argument = "MOUSE",
+        BulletName = "BULLET_RAYS",
+        BulletBeamName = "GunBeam" or "gb" or "Beam" or "Beam1",
+        BulletPath = workspace:FindFirstChild("Ignored") or nil,
+    },
+    [125825216602676] = {
+        Number = 22,
+        Name = "Da Downhill",
+        Remote = "MAINEVENT",
+        Argument = "MOUSE"
+    },
 }; --// Credits to farzad
+--// Credit to atzlazyblue (not dev) mf did 82% of the supportment
 
---// automatic bypass
+--// automatic bypass | who ever made adonis is a opp
 AdonisBypass = game_support[game.PlaceId] and game_support[game.PlaceId].AdonisBypass
 
 if AdonisBypass then
@@ -3050,25 +3084,39 @@ local locals = {
 	}
 };
 
-local drawings = {};
-local signals = {};
-local instances = {
-	target_ui = {}
-};
-local blood_splatters = {};
-local ui = {
-	window = nil,
-	tabs = {}
+local AssetID = {
+	["SkyBoxes"] = {
+        ["Normal"] = {600886090,600830446,600831635,600832720,600833862,600835177},
+        ["DoomSpire"] = {6050649245,6050664592,6050648475,6050644331,6050649718,6050650083},
+        ["CatGirl"] = {444167615,444167615,444167615,444167615,444167615,444167615},
+        ["Vibe"] = {1417494402,1417494030,1417494146,1417494253,1417494499,1417494643},
+        ["Blue Aurora"] = {12063984,12064107,12064152,12064121,12064115,12064131},
+        ["Purple Clouds"] = {151165191,151165214,151165197,151165224,151165206,151165227},
+        ["Purple Nebula"] = {159454286,159454299,159454296,159454293,159454300,159454288},
+        ["Twighlight"] = {264909758,264908339,264907909,264909420,264908886,264907379},
+        ["Vivid Skies"] = {271042310,271042516,271077243,271042556,271042467,271077958},
+        ["Purple and Blue"] = {149397684,149397692,149397686,149397697,149397688,149397702},
+    },
+    ["Angle"] = 0,
+	["Characters"] = {
+		AmongUs = {Vector3.new(0.15,0.15,0.15), "6686375937", "6686375902"}, 
+		SpongeBob = {Vector3.new(5,5,5), "5408463358", "5408463211"},
+		Patrick = {Vector3.new(0.4,0.4,0.4), "5730253510", "5730253467"}, 
+		Maxell = {Vector3.new(0.2,0.2,0.2), "12303996609", "12303996327"},
+		Brian = {Vector3.new(1.7,1.7,1.7), "512454212", "512454192"},
+		CapyBara = {Vector3.new(2,2,2), "11255227067", "11255226712"},
+		Chicken = {Vector3.new(3, 3, 3), "2114220248", "2114220154"},
+		Sonic = {Vector3.new(0.15,0.15,0.15), "6901422268", "6901422170"},
+	}
 }
 
-local connections = {
-	gun = {}
-};
-
---// addon library
-local script_addon = {
-    events = {}
-};
+local drawings = {};
+local signals = {};
+local instances = {target_ui = {}};
+local blood_splatters = {};
+local ui = {window = nil,tabs = {}}
+local connections = {gun = {}};
+local script_addon = {events = {}};
 
 --// screengui
 local screen_gui = Instance.new("ScreenGui");
@@ -3148,7 +3196,7 @@ local utility = {}; do
 
 		local root_part = player.Character.HumanoidRootPart;
 
-		return root_part.Velocity.Y ~= 0; --// my old one was so fucking broken and weird so ill js use velocity check
+		return root_part.Velocity.Y ~= 0;
 	end);
 
 	utility.is_friends_with = LPH_NO_VIRTUALIZE(function(player)
@@ -3160,7 +3208,6 @@ local utility = {}; do
 		return #amount ~= 0;
 	end);
 	
-
 	utility.drawing_new = function(type, properties)
 		local drawing_object = Drawing.new(type);
 
@@ -4706,7 +4753,7 @@ do
 					elseif (type == "Random") then
 						local randomization = flags["anti_aim_velocity_spoofer_randomization"];
 
-						new_velocity = custom_math.random_vector3(randomization * 3);
+						new_velocity = custom_math.random_vector3(randomization * 1000); 
 					end;
 
 					hrp.Velocity = new_velocity;
@@ -4849,6 +4896,100 @@ do
 				end);
 			end;
 		end);
+	end;
+	
+	---// override
+	do
+	    Library:Connection(run_service.RenderStepped, function()
+	        local override_skybox = flags["override_world_skybox"]
+	        local skyboxassetid = flags["override_world_skybox_rbxassetid"]
+	        
+	        local override_character = flags["override_local_character"]
+	        local custom_character = flags["custom_local_character_module"]
+       
+	        local no_slowdown = flags["override_anti_slowdown"]
+	        local no_spread = flags["override_anti_spread"]
+	        local no_recoil = flags["override_anti_recoil"]
+	
+			if no_slowdown then
+				local Slowdowns = LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("NoJumping") or LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("ReduceWalk") or LocalPlayer.Character.BodyEffects.Movement:FindFirstChild("NoWalkSpeed")
+		
+				if Slowdowns then
+					Slowdowns:Destroy()
+				end
+		
+				if LocalPlayer.Character.BodyEffects.Reload.Value then
+					LocalPlayer.Character.BodyEffects.Reload.Value = false
+				end
+		
+				if LocalPlayer.Character.BodyEffects.Reloading.Value then
+					LocalPlayer.Character.BodyEffects.Reloading.Value = false
+				end
+			end
+			
+			if no_slowdown then
+			
+			end
+			
+			if no_spread then
+			
+			end
+	
+	        if override_skybox then
+	            if lighting:FindFirstChildOfClass("Sky") then
+	                local sky = lighting:FindFirstChildOfClass("Sky")
+	                sky.SkyboxBk = "rbxassetid://" .. AssetID.SkyBoxes[skyboxassetid][1]
+	                sky.SkyboxDn = "rbxassetid://" .. AssetID.SkyBoxes[skyboxassetid][2]
+	                sky.SkyboxFt = "rbxassetid://" .. AssetID.SkyBoxes[skyboxassetid][3]
+	                sky.SkyboxLf = "rbxassetid://" .. AssetID.SkyBoxes[skyboxassetid][4]
+	                sky.SkyboxRt = "rbxassetid://" .. AssetID.SkyBoxes[skyboxassetid][5]
+	                sky.SkyboxUp = "rbxassetid://" .. AssetID.SkyBoxes[skyboxassetid][6]
+	                sky.Parent = lighting
+	            end;
+	        else
+	            if lighting:FindFirstChildOfClass("Sky") then
+	                local sky = lighting:FindFirstChildOfClass("Sky")
+	                sky.SkyboxBk = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][1]
+	                sky.SkyboxDn = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][2]
+	                sky.SkyboxFt = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][3]
+	                sky.SkyboxLf = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][4]
+	                sky.SkyboxRt = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][5]
+	                sky.SkyboxUp = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][6]
+	            else
+	                local sky = Instance.new("Sky")
+	                sky.SkyboxBk = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][1]
+	                sky.SkyboxDn = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][2]
+	                sky.SkyboxFt = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][3]
+	                sky.SkyboxLf = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][4]
+	                sky.SkyboxRt = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][5]
+	                sky.SkyboxUp = "rbxassetid://" .. AssetID.SkyBoxes["Normal"][6]
+	                sky.Parent = lighting
+	            end;
+	        end;
+	
+	        if override_character then
+	            local character_name = flags["custom_local_character_module"]
+	            if AssetID.Characters[character_name] then
+	                local scale = AssetID.Characters[character_name][1]
+	                local head_asset_id = AssetID.Characters[character_name][2]
+	                local body_asset_id = AssetID.Characters[character_name][3]
+	                
+	                local player = game.Players.LocalPlayer
+	                if player.Character then
+	                    player.Character.Head.MeshId = "rbxassetid://" .. head_asset_id
+	                    player.Character.Body.MeshId = "rbxassetid://" .. body_asset_id
+	                    player.Character:SetPrimaryPartCFrame(player.Character.PrimaryPart.CFrame)
+	                    
+	                    for _, part in pairs(player.Character:GetChildren()) do
+	                        if part:IsA("BasePart") then
+	                            part.Size = part.Size * scale
+	                        end;
+	                    end;
+	                end;
+	            end;
+	        end;
+	
+	    end)
 	end;
 
     --// gun connections
@@ -5129,23 +5270,36 @@ if (ESP) then
 			local esp_enabled = flags["visuals_esp_enabled"];
 			local boxes_enabled = flags["visuals_esp_boxes_enabled"];
 			local boxes_color = flags["visuals_esp_boxes_color"];
+			
 			local names_enabled = flags["visuals_esp_names_enabled"];
 			local names_color = flags["visuals_esp_names_color"];
+			
 			local head_dots_enabled = flags["visuals_esp_head_dots_enabled"];
 			local head_dots_color = flags["visuals_esp_head_dots_color"];
 			local head_dots_sides = flags["visuals_esp_head_dots_sides"];
 			local head_dots_size = flags["visuals_esp_head_dots_size"];
+			
 			local health_bar_enabled = flags["visuals_esp_health_bar_enabled"];
 			local health_bar_health_based_color = flags["visuals_esp_health_bar_health_based_color"];
 			local health_bar_color = flags["visuals_esp_health_bar_color"]
+			
 			local health_text_enabled = flags["visuals_esp_health_text_enabled"];
 			local health_text_color = flags["visuals_esp_health_text_color"];
 			local health_text_health_based_color = flags["visuals_esp_health_text_health_based_color"];
-			local armor_bar_enabled = flags["visuals_esp_armor_bar_enabled"];
+			
+			local armor_bar_enabled = flags["visuals_esp_armor_bar_enabled"];			
 			local armor_bar_color = flags["visuals_esp_armor_bar_color"];
+			
 			local boxes_target_color_enabled = flags["visuals_esp_boxes_target_color_enabled"];
 			local boxes_target_color = flags["visuals_esp_boxes_target_color"];
-
+			
+			-- boxes target
+			do
+				local boxestarget_toggle = legit_silent_aim:Toggle({Name = "Armor Bar", Flag = "boxes_target_color_enabled"});
+				local boxestarget_option_list = boxestarget_toggle:OptionList({});
+			    boxestarget_option_list:Colorpicker({Name = "Color", Flag = "boxes_target_color", Default = default_color});
+			end;
+			
 			local players = esp.players;
 	
 			for player, esp in players do
@@ -5318,10 +5472,14 @@ do
 	end;
 end;
 
+local LogoAccent = default_color -- eh
+
 do
 	--// Example
 	local window = library:New({
-		Size = UDim2.new(0, 600, 0, 500)
+		Size = UDim2.new(0, 600, 0, 500),
+		Logo = "http://www.roblox.com/asset/?id=17673929618",
+		LogoRGB = LogoAccent
 	});
 
 	local watermark = library:Watermark({Name = ""});
@@ -5332,6 +5490,7 @@ do
 	window:Seperator({Name = "Visuals"});
 	ui.tabs["world"] = window:Page({Name = "World", Icon = "http://www.roblox.com/asset/?id=6034684930"});
 	ui.tabs["view"] = window:Page({Name = "View", Icon = "http://www.roblox.com/asset/?id=6031075931"});
+	ui.tabs["override"] = window:Page({Name = "Override", Icon = "http://www.roblox.com/asset/?id=7734022107"});
 	window:Seperator({Name = "Player"});
 	ui.tabs["movement"] = window:Page({Name = "Movement", Icon = "http://www.roblox.com/asset/?id=6034754445"});
 	ui.tabs["anti_aim"] = window:Page({Name = "Anti Aim", Icon = "http://www.roblox.com/asset/?id=14760676189"});
@@ -5494,7 +5653,7 @@ do
 			main_toggle_option_list:Toggle({Name = "Auto Shoot", Flag = "rage_target_aim_auto_shoot"});
 			main_toggle_option_list:Toggle({Name = "Look At", Flag = "rage_target_aim_look_at"});
 			main_toggle_option_list:Toggle({Name = "Randomized BodyPart", Flag = "rage_target_aim_randomized_body_part"});
-			--main_toggle_option_list:Toggle({Name = "Movement Simulation", Flag = "rage_target_aim_movement_simulation"});
+			main_toggle_option_list:Toggle({Name = "Movement Simulation", Flag = "rage_target_aim_movement_simulation"});
 			
 			rage_main_target_aim:Keybind({Flag = "rage_target_aim_key", Default = Enum.KeyCode.E, Mode = "Toggle", Callback = function(key)
 				local target_aim_enabled = flags["rage_target_aim_enabled"];
@@ -5860,7 +6019,7 @@ do
 				end});
 			end;
 
-			if (ESP) then
+			if true then
 				local esp_section = ui.tabs["view"]:Section({Name = "ESP", Side = "Right", Size = 210});
 				--// esp section
 				do
@@ -5902,6 +6061,33 @@ do
 				cursor_text:Slider({Name = "Cursor Offset", Flag = "visuals_text_cursor_offset", Default = 49, Minimum = 1, Maximum = 100, Decimals = 0.0001, Ending = "%"});
 				cursor_text:Textbox({Flag = "visuals_cursor_custom_text_text", Placeholder = "[${target_name}]"});
 			end;
+		end;
+	end;
+	
+	--// override
+	do
+		--// sections
+		local override_world = ui.tabs["override"]:Section({Name = "World", Side = "Left", Size = 127});
+		local override_anti = ui.tabs["override"]:Section({Name = "Anti", Side = "Right", Size = 127});
+		
+ 	   do
+           local override_recoil = override_anti:Toggle({Name = "Recoil", Flag = "override_anti_recoil"});
+           local override_spread = override_anti:Toggle({Name = "Spread", Flag = "override_anti_spread"});
+           local override_slowdown = override_anti:Toggle({Name = "Slowdown", Flag = "override_anti_slowdown"});
+    	end;
+
+		--// override skybox
+		do
+	    	local override_skybox_toggle = override_world:Toggle({Name = "Skybox", Flag = "override_world_skybox"});
+			local override_skybox_option_list = override_skybox_toggle:OptionList({});
+			override_skybox_option_list:List({Name = "Skybox Decal", Flag = "override_world_skybox_rbxassetid", Options = {"Normal", "DoomSpire", "CatGirl", "Vibe", "Blue Aurora", "Purple Clouds", "Purple Nebula", "Twighlight", "Vivid Skies", "Purple and Blue"}, Default = "Normal"});
+		end;
+		
+		--// override character
+		do
+	    	local override_character_toggle = override_world:Toggle({Name = "Character", Flag = "override_local_character"});
+			local override_character_option_list = override_character_toggle:OptionList({});
+			override_character_option_list:List({Name = "Module", Flag = "custom_local_character_module", Options = {"AmongUs", "SpongeBob", "Patrick", "Maxell", "Brian", "CapyBara", "Chicken", "Sonic"}, Default = "Normal"});
 		end;
 	end;
 
@@ -6034,7 +6220,7 @@ do
 		        writefile("starhook/configs/" .. selected_config .. ".cfg", Library:GetConfig());
 		    end;
 		end});
-
+        
 		cfgs:Button({Name = "Load", Callback = function()
 		    local selected_config = flags.setting_configuration_list;
 		    if selected_config then
@@ -6067,6 +6253,7 @@ do
 
 		window:Colorpicker({Name = "Menu Accent", Flag = "MenuAccent", Default = default_color, Callback = function(state)
 			library:ChangeAccent(state);
+			LogoAccent = state
 		end});
 		
 		--// tools
@@ -6090,21 +6277,25 @@ do
 		end;
 		
 		MakeButton = function(ButtonKeybind, ButtInstanceName)
-		    local ButtInstanceName = Instance.new("TextButton")
-			MakeDraggable(ButtInstanceName)
-		    ButtInstanceName.Name = ButtonKeybind
-		    ButtInstanceName.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-		    ButtInstanceName.AnchorPoint = Vector2.new(0.5, 0.5)
-            ButtInstanceName.Position = UDim2.new(0.5, 0, 0.5, 0)
-		    ButtInstanceName.Text = ButtonKeybind
-		    ButtInstanceName.TextColor3 = Color3.fromRGB(255, 255, 255)
-		    ButtInstanceName.BorderColor3 = Color3.new(0,0,0)
-		    ButtInstanceName.AutoButtonColor = false
-		    ButtInstanceName.Parent = game.CoreGui
+		    local MBSG Instance.new('ScreenGui', game:GetService("RunService"):IsStudio() and game.Players.LocalPlayer.PlayerGui or game.CoreGui).DisplayOrder = 100
+		    local Button = Instance.new("TextButton", MBSG)
 		
-		    ButtInstanceName.MouseButton1Click:Connect(function()
-				game:GetService("VirtualInputManager"):SendKeyEvent(true, ButtonKeybind, false, game)
-            end)
+			MBSG.DisplayOrder = 9999
+			MBSG.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+		    
+		    MakeDraggable(Button)
+		    Button.Name = ButtonKeybind
+		    Button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+		    Button.AnchorPoint = Vector2.new(0.5, 0.5)
+		    Button.Position = UDim2.new(0.5, 0, 0.5, 0)
+		    Button.Text = ButtonKeybind
+		    Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+		    Button.BorderColor3 = Color3.new(0,0,0)
+		    Button.AutoButtonColor = false
+		    
+		    Button.MouseButton1Click:Connect(function()
+		        game:GetService("VirtualInputManager"):SendKeyEvent(true, ButtonKeybind, false, game)
+		    end)
 		end;
 		
 		tools:Textbox({Flag = "Tool Keybind", Placeholder = "Tool Keybind"});
