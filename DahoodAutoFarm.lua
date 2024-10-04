@@ -32,8 +32,6 @@ repeat
         Status:Set("Status: Waiting ForceField")
 	task.wait();
 until not hasProtectionShield(game:GetService("Players").LocalPlayer) 
-
-task.wait(1);
 task.spawn(function()
 	while true do
 		wait();
@@ -263,10 +261,10 @@ function startfarm()
 				until Cashier ~= nil
 				repeat
                                 Status:Set("Status: Attack Cashier")
-					To(Cashier.Head.CFrame * CFrame.new(0, -1, 1));
+					To(Cashier.Head.CFrame * CFrame.new(0, -1, 2));
 					task.wait();
 					Attack()
-					position = Cashier.Head.CFrame * CFrame.new(0, -6.5, 1);
+					position = Cashier.Head.CFrame * CFrame.new(0, -8, 1);
 				until Cashier.Humanoid.Health <= 0 
 				Broken += 1
 				for i, v in pairs(Player.Character:GetChildren()) do
@@ -290,7 +288,7 @@ function startfarm()
         Status:Set("Status: Collect Cash")
         
         local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
-        local waitTime = math.clamp(ping / 250, 0.25, 0.5)
+        local waitTime = math.clamp(ping / 250, 0.3, 0.5)
         task.wait(waitTime)
         Cash = GetCash()
     until #Cash <= 0
@@ -332,7 +330,7 @@ local character = player.Character or player.CharacterAdded:Wait()
 startfarm();
 task.spawn(function()
 while task.wait(1) do
-Money:Set("Money: "..StartCash)
+Money:Set("Start Money: "..StartCash)
 Profit:Set("Profit: "..Player.DataFolder.Currency.Value - StartCash)
 AtmBreak:Set("Atm Break: "..Broken)
 end
