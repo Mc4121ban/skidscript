@@ -288,7 +288,7 @@ function startfarm()
         Status:Set("Status: Collect Cash")
         
         local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
-        local waitTime = math.clamp(ping / 250, 0.3, 0.5)
+        local waitTime = math.clamp(ping / 250, 0.35, 0.5)
         task.wait(waitTime)
         Cash = GetCash()
     until #Cash <= 0
