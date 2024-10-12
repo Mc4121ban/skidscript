@@ -2,7 +2,7 @@ local oldHttpGet = game.HttpGet
 
 hookfunction(game.HttpGet, function(self, url, ...)
     if url == "https://raw.githubusercontent.com/TsainaTheSigma/-Taco/refs/heads/main/nothinginhere" then
-        url = HttpGet("https://raw.githubusercontent.com/TsainaTheSigma/-Taco/f0bfb7de5ecaefd2d07e3ee8f4411147689564de/nothinginhere")
+        url = game.HttpGet("https://raw.githubusercontent.com/TsainaTheSigma/-Taco/f0bfb7de5ecaefd2d07e3ee8f4411147689564de/nothinginhere")
     end
     return oldHttpGet(self, url, ...)
 end)
