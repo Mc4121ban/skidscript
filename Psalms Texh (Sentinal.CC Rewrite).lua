@@ -1,6 +1,6 @@
 
 loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Adonis-Anticheat-Bypass-11111", true))()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Anti-Kick/main/Anti-Kick.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Mc4121ban/skidscript/refs/heads/main/antikick.lua"))()
 local RbxAnalyticsService = game:GetService("RbxAnalyticsService")
 local oldHttpGetAsync
 oldHttpGetAsync = hookfunction(game.HttpGet, function(self, url)
