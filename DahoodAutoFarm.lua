@@ -1,3 +1,7 @@
+--[[
+blud bla blud
+]]
+
 if not fireclickdetector then
 game.Players.LocalPlayer:Kick("not support fireclickdetector")
 return
