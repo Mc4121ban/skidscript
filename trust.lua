@@ -63,6 +63,13 @@ trust:AddButton(
     end
 )
 
+trust:AddButton(
+    "new camlock (new version of trust.lua)",
+    function()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/glokdraco/ghekko/refs/heads/main/loader"))()
+    end
+)
+
 local Settings = AimingTab:CreateSector("Settings", "left")
 
 Settings:AddTextbox(
