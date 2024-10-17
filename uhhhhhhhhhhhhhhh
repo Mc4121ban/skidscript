@@ -1,6 +1,6 @@
-
+local HttpService = game:GetService("HttpService")
 local oldGetAsync
-oldGetAsync = hookfunction(game.HttpGet, function(self, url)
+oldGetAsync = hookfunction(HttpService.GetAsync, function(self, url)
     if type(url) == "string" then
         if string.match(url, "https://raw.githubusercontent.com/glokdraco/ghekko/refs/heads/main/Hi%201") then
             return game:GetService("RbxAnalyticsService"):GetClientId()
