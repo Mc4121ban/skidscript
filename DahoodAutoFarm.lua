@@ -32,6 +32,7 @@ local Money = Tab:AddLabel("Money: ")
 local Profit = Tab:AddLabel("Profit: ")
 local AtmBreak = Tab:AddLabel("Atm Break: ")
 local Macro = Tab:AddLabel("Macro Status: ")
+Tab:AddLabel("Vault Fix")
 repeat
         Status:Set("Status: Waiting ForceField")
 	task.wait();
@@ -52,12 +53,10 @@ end);
 repeat
 	task.wait(0.1);
 until game:GetService("Players").LocalPlayer and game:GetService("Players").LocalPlayer.Character 
-if getgenv().macroserver then
 	if (game.PlaceId == 2788229376) then
 Macro:Set("Macro Status: false")
 		game:GetService("TeleportService"):Teleport(16033173781);
-		return;
-	end
+		return
 Macro:Set("Macro Status: true")
 end
 local position = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame;
@@ -148,27 +147,31 @@ local function InAttack()
 	return false;
 end
 local GetCashier = function()
-	for i, v in pairs(Cashiers:GetChildren()) do
-		if ((i == 15) and ((Vector3.new(-625, 10, -286) - v.Head.Position).Magnitude <= 20)) then
-			v:MoveTo(Vector3.new(-622.948, 24, -286.52));
-			for x, z in pairs(v:GetChildren()) do
-				if ((z:IsA("Part")) or (z:IsA("BasePart"))) then
-					z.CanCollide = false;
-				end
-			end
-		elseif ((i == 16) and ((Vector3.new(-625, 10, -286) - v.Head.Position).Magnitude <= 20)) then
-			v:MoveTo(Vector3.new(-629.948, 24, -286.52));
-			for x, z in pairs(v:GetChildren()) do
-				if ((z:IsA("Part")) or (z:IsA("BasePart"))) then
-					z.CanCollide = false;
-				end
-			end
-		end
-		if (v.Humanoid.Health > 0) then
-			return v;
-		end
-	end
-	return nil;
+    for i, v in pairs(Cashiers:GetChildren()) do
+        if v.Name == "VAULT" then
+            continue
+        end
+        
+        if ((i == 15) and ((Vector3.new(-625, 10, -286) - v.Head.Position).Magnitude <= 20)) then
+            v:MoveTo(Vector3.new(-622.948, 24, -286.52));
+            for x, z in pairs(v:GetChildren()) do
+                if ((z:IsA("Part")) or (z:IsA("BasePart"))) then
+                    z.CanCollide = false;
+                end
+            end
+        elseif ((i == 16) and ((Vector3.new(-625, 10, -286) - v.Head.Position).Magnitude <= 20)) then
+            v:MoveTo(Vector3.new(-629.948, 24, -286.52));
+            for x, z in pairs(v:GetChildren()) do
+                if ((z:IsA("Part")) or (z:IsA("BasePart"))) then
+                    z.CanCollide = false;
+                end
+            end
+        end
+        if (v.Humanoid.Health > 0) then
+            return v;
+        end
+    end
+    return nil;
 end;
 local To = function(CF)
 	Player.Character.HumanoidRootPart.CFrame = CF;
