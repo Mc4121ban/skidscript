@@ -1,7 +1,5 @@
+game:GetService("Players").LocalPlayer:Kick("Script Patched. We will back or dead forever")
 --[[
-blud bla blud
-]]
-
 if not fireclickdetector then
 game.Players.LocalPlayer:Kick("not support fireclickdetector")
 return
@@ -343,3 +341,4 @@ Profit:Set("Profit: "..Player.DataFolder.Currency.Value - StartCash)
 AtmBreak:Set("Atm Break: "..Broken)
 end
 end)
+]]
